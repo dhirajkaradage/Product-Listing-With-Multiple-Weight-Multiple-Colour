@@ -1,0 +1,22 @@
+<hello name="{{ name }}"></hello>
+<p>Start editing to see some magic happen :)</p>
+
+<div *ngFor="let product of productList; let productIndex = index">
+  {{ product.name }}
+  <div class="flex-color">
+    <div *ngFor="let color of availableColorVarients[productIndex]">
+      <input type="color" [value]="color.colourMaster.hexCode" />
+    </div>
+  </div>
+
+  <div class="flex-color">
+    <div
+      *ngFor="let weight of product.weightVariants; let wIndex = index"
+      class=""
+    >
+      <button (click)="onWeightChange(productIndex, wIndex)">
+        {{ weight.weightMaster.weight }} {{ weight.weightMaster.uom.name }}
+      </button>
+    </div>
+  </div>
+</div>
